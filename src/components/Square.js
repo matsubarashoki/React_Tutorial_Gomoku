@@ -1,10 +1,7 @@
 import "./Square.css"
 
-export default function Square({value,setValue}) {
-  const ClickHandler = () => {
-    setValue("X");
-  }
+export default function Square({value,onSquareClick}) {
   return (
-      <button className="square" onClick={ClickHandler}>{value}</button>
+      <button className="square" onClick={onSquareClick}>{value}</button>
   )
 }

@@ -14,7 +14,7 @@ const Game = () => {
   return(
     <div className="game">
       <div className="game-board">
-        <Board xIsNext={xIsNext} squares={currentSqeares} onPlay={handlePlay}/>
+        <Board xIsNext={xIsNext} squares={currentSqeares} onPlay={handlePlay} />
       </div>
       <div className="game-info">
         <ol>{/*TODO*/}</ol>
