@@ -1,7 +1,7 @@
-import { useState } from "react"
-import { useTodos,UseDipatchTodos } from "../context/TodoContext"
+import { useState } from "react";
+import { useTodos, UseDipatchTodos } from "../context/TodoContext";
 
-const Form = ({ createTodo }) => {
+const Form = () => {
   const [enteredTodo, setEnteredTodo] = useState("");
   const todos = useTodos();
   const dispatch = UseDipatchTodos();
@@ -10,11 +10,11 @@ const Form = ({ createTodo }) => {
     e.preventDefault();
     let MaxId = todos.map((todo) => todo.id);
     const newTodo = {
-      id: Math.max.apply(null,MaxId),
+      id: Math.max.apply(null, MaxId),
       content: enteredTodo,
-      editing: false
+      editing: false,
     };
-    dispatch({type: 'todo/add', todo: newTodo});
+    dispatch({ type: "todo/add", todo: newTodo });
     setEnteredTodo("");
   };
   return (

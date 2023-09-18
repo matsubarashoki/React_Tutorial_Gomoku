@@ -1,27 +1,27 @@
-import { createContext, useContext,useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 
 const TodoContext = createContext();
 const TodoDispatchContext = createContext();
 
 const todoList = [
   {
-    id:1 ,
+    id: 1,
     content: "Reactチュートリアル",
-    editing:false,
+    editing: false,
   },
   {
-    id:2 ,
+    id: 2,
     content: "Next.jsチュートリアル",
-    editing:false,
+    editing: false,
   },
   {
-    id:3 ,
+    id: 3,
     content: "Reminder実装",
-    editing:false,
-  }
+    editing: false,
+  },
 ];
 
-const todoReducer = (todos,action) => {
+const todoReducer = (todos, action) => {
   switch (action.type) {
     case "todo/add":
       return [...todos, action.todo];
@@ -33,7 +33,7 @@ const todoReducer = (todos,action) => {
       return todos.map((_todo) => {
         return _todo.id === action.todo.id
           ? { ..._todo, ...action.todo }
-          : { ..._todo};
+          : { ..._todo };
       });
     default:
       return todos;
@@ -41,12 +41,12 @@ const todoReducer = (todos,action) => {
 };
 
 const TodoProvider = ({ children }) => {
-  const [todos, dispatch] = useReducer(todoReducer,todoList);
+  const [todos, dispatch] = useReducer(todoReducer, todoList);
   return (
     <TodoContext.Provider value={todos}>
-      <TodoDispatchContext value={dispatch}>
-        { children }
-      </TodoDispatchContext>
+      <TodoDispatchContext.Provider value={dispatch}>
+        {children}
+      </TodoDispatchContext.Provider>
     </TodoContext.Provider>
   );
 };
@@ -54,4 +54,4 @@ const TodoProvider = ({ children }) => {
 const useTodos = () => useContext(TodoContext);
 const UseDipatchTodos = () => useContext(TodoDispatchContext);
 
-export { useTodos, UseDipatchTodos, TodoProvider}
+export { useTodos, UseDipatchTodos, TodoProvider };
